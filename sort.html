@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Testing</h1>
+</body>
+
+<script>
+    const goals = [
+  { mark: "notDone", theGoal: "error pa?", yearGoal: "5 Year Goal", id: "70ab" },
+  { mark: "notDone", theGoal: "Make Music", yearGoal: "10 Year Goal", id: "e66e" },
+  { mark: "notDone", theGoal: "three year goal", yearGoal: "3 Year Goal", id: "cf91" },
+  { mark: "notDone", theGoal: "5 year goal", yearGoal: "5 Year Goal", id: "d63c" },
+  { mark: "notDone", theGoal: "Ben 10", yearGoal: "5 Year Goal", id: "e5ef" },
+  { mark: "notDone", theGoal: "Testing this is a much longer rename of a long title testing testing testing", yearGoal: "10 Year Goal", id: "117c" },
+];
+
+// Function to extract the numeric value from the yearGoal string
+const getYearValue = (yearGoal) => {
+  const match = yearGoal.match(/(\d+)/); // Match digits
+  return match ? parseInt(match[0], 10) : 0; // Return numeric value or 0 if not found, the 10 is just to say it's decimal not hexadecimal or other stuff. But by default really it's already set to decimal so this isn't really necessary in this line, you could just ignore that if you want.
+};
+
+// Sort goals from greatest to least based on yearGoal
+//"a" and "b" isn't necessarily the greatest and lowest, they're just the ones that is positioned in start at first, in this case the first is "error pa", and then the "b" is "make music", then it'll go down till the "Testing this is a much..." is reached.
+const sortedGoals = goals.sort((a, b) => {
+  console.log(`This is b: ${getYearValue(b.yearGoal)}, then this is a: ${getYearValue(a.yearGoal)}`)
+  return getYearValue(b.yearGoal) - getYearValue(a.yearGoal); // Sort in descending order, who ever wins will go to the very first position of the array
+});
+
+console.log(sortedGoals);
+</script>
+</html>
